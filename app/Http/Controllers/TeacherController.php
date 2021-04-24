@@ -7,6 +7,7 @@ use App\Models\Teacher;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Response;
 use Illuminate\Support\Facades\Session;
+use Auth;
 
 class TeacherController extends Controller
 {
@@ -22,7 +23,7 @@ class TeacherController extends Controller
     {
         $data = array();
 
-        
+        dd(Session::get('user'));
         $data['teachers'] = Teacher::all();
         return view('teachers.add')->with($data);
     }
@@ -49,7 +50,10 @@ class TeacherController extends Controller
 
         }else{
 
+
+
             $t = new Teacher();
+            $t->branch_id = Auth::user()->getId();
             $t->teacher_code = $request->teacher_code;
             $t->name = $request->name;
             $t->joined_date = $request->joined_date;
@@ -62,14 +66,14 @@ class TeacherController extends Controller
             $t->address = $request->address;
 
             $currentPhoto = $t->image;
-            
+
             $img = time().'.' . $request->image->getClientOriginalExtension();
             // dd($img);
             // $img = time().'.' . explode('/', explode(':', substr($request->image, 0, strpos($request->image, ';')))[1])[1];
-    
+
             \Image::make($request->image)->save(public_path('img/').$img);
             $request->merge(['image' => $img]);
-    
+
             $userPhoto = public_path('img/').$currentPhoto;
             $t->image = $img;
 

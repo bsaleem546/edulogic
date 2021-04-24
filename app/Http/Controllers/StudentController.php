@@ -8,6 +8,7 @@ use App\Models\Rooms;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Response;
 use Illuminate\Support\Facades\Session;
+use Auth;
 
 class StudentController extends Controller
 {
@@ -50,6 +51,7 @@ class StudentController extends Controller
         }else{
 
             $s = new Student();
+            $s->branch_id = Auth::user()->id;
             $s->std_code = $request->std_code;
             $s->fname = $request->fname;
             $s->lname = $request->lname;
@@ -66,14 +68,14 @@ class StudentController extends Controller
             $s->room_id = $request->room_id;
 
             $currentPhoto = $s->image;
-            
+
             $img = time().'.' . $request->image->getClientOriginalExtension();
             // dd($img);
             // $img = time().'.' . explode('/', explode(':', substr($request->image, 0, strpos($request->image, ';')))[1])[1];
-    
+
             \Image::make($request->image)->save(public_path('img/').$img);
             $request->merge(['image' => $img]);
-    
+
             $userPhoto = public_path('img/').$currentPhoto;
             $s->image = $img;
 

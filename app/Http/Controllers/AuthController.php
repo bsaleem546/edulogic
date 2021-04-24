@@ -27,13 +27,24 @@ class AuthController extends Controller
 
     public function admin_dashboard()
     {
-        return view('dashboard');
+        if(!Session::get('isSuperAdmin') == null){
+            return view('dashboard');
+        }
+        else{
+            return redirect()->back();
+        }
     }
 
     public function admin_logout()
     {
-        Session::flush();
-        return redirect(route('login'));
+        if(!Session::get('isSuperAdmin') == null){
+            Session::flush();
+            return redirect(route('login'));
+        }
+        else{
+            return redirect()->back();
+        }
+
     }
 
     public function school_login(Request $request)
@@ -74,13 +85,25 @@ class AuthController extends Controller
             Session::put('isSuperAdmin', '');
             Session::put('user', $user);
         }
+//        dd('asdas1');
+        if(!Session::get('isHeadSchool') == null || !Session::get('isSchool') == null ){
 
-        return view('dashboard');
+            return view('dashboard');
+        }
+        else{
+            return redirect()->back();
+        }
     }
 
     public function school_logout()
     {
-        Session::flush();
-        return redirect(route('school-login'));
+        if(!Session::get('isHeadSchool') == null || !Session::get('isSchool') == null ){
+            Session::flush();
+            return redirect(route('school-login'));
+        }
+        else{
+            return redirect()->back();
+        }
+
     }
 }

@@ -83,7 +83,7 @@
                     <!-- User profile and search -->
                     <!-- ============================================================== -->
                     <ul class="navbar-nav my-lg-0">
-                        
+
 
                         <li class="nav-item dropdown u-pro">
                             <a class="nav-link dropdown-toggle waves-effect waves-dark profile-pic" href="" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img src="{{ asset('assets/images/users/1.jpg')  }}" alt="user" class=""> <span class="hidden-md-down"> {{ (\Illuminate\Support\Facades\Session::get('isSuperAdmin')) ? \Illuminate\Support\Facades\Session::get('user')['name'] : \Illuminate\Support\Facades\Session::get('user')['school_name'] }} &nbsp;<i class="fa fa-angle-down"></i></span> </a>
@@ -204,6 +204,7 @@
                         </li>
                         @endif
 
+{{--                        @if(\Illuminate\Support\Facades\Session::get('isSchool'))--}}
                         <li> <a class="has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false"><i class="fa fa-home" aria-hidden="true"></i><span class="hide-menu">Teachers</span></a>
                             <ul aria-expanded="false" class="collapse">
                                 <li><a href="{{ route('all-teachers') }}">All Teachers</a></li>
@@ -217,6 +218,7 @@
                                 <li><a href="{{ route('add-students') }}">Add Student</a></li>
                             </ul>
                         </li>
+{{--                        @endif--}}
 
                     </ul>
                 </nav>

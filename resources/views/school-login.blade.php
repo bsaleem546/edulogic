@@ -8,14 +8,14 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <!-- Favicon icon -->
-    <link rel="icon" type="image/png" sizes="16x16" href="{{ url('public/assets/images/favicon.png') }}">
+    <link rel="icon" type="image/png" sizes="16x16" href="{{ asset('/assets/images/favicon.png') }}">
     <title>MyEduLogic Admin Login</title>
     <!-- page css -->
-    <link href="{{ url('public/dist/css/pages/login-register-lock.css') }}" rel="stylesheet">
+    <link href="{{ asset('/dist/css/pages/login-register-lock.css') }}" rel="stylesheet">
     <!-- Custom CSS -->
-    <link href="{{ url('public/dist/css/style.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('/dist/css/style.min.css') }}" rel="stylesheet">
     <!-- Sweetalert -->
-    <link href="{{ url('public/assets/node_modules/sweetalert2/dist/sweetalert2.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('/assets/node_modules/sweetalert2/dist/sweetalert2.min.css') }}" rel="stylesheet">
 </head>
 
 <body class="skin-default card-no-border">
@@ -95,11 +95,11 @@
     <!-- ============================================================== -->
     <!-- All Jquery -->
     <!-- ============================================================== -->
-    <script src="{{ url('public/assets/node_modules/jquery/jquery-3.2.1.min.js') }}"></script>
-    <script src="{{ url('public/assets/node_modules/popper/popper.min.js') }}"></script>
-    <script src="{{ url('public/assets/node_modules/bootstrap/dist/js/bootstrap.min.js') }}"></script>
-    <script src="{{ url('public/assets/node_modules/sweetalert2/dist/sweetalert2.min.js') }}"></script>
-    <script src="{{ url('public/js/ajax.js') }}"></script>
+    <script src="{{ asset('/assets/node_modules/jquery/jquery-3.2.1.min.js') }}"></script>
+    <script src="{{ asset('/assets/node_modules/popper/popper.min.js') }}"></script>
+    <script src="{{ asset('/assets/node_modules/bootstrap/dist/js/bootstrap.min.js') }}"></script>
+    <script src="{{ asset('/assets/node_modules/sweetalert2/dist/sweetalert2.min.js') }}"></script>
+    <script src="{{ asset('/js/ajax.js') }}"></script>
     <script type="text/javascript">
         $(function() {
             $(".preloader").fadeOut();
